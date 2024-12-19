@@ -28,7 +28,8 @@ class Course extends Model
         return $this->belongsTo(Teacher::class);
     }
 
-    public function course_video() {
+    public function course_videos() {
+        
         return $this->hasMany(CourseVideo::class);
     }
     public function course_keypoints(){

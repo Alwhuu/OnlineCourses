@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex flex-row justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="flex flex-row items-center justify-between">
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 {{ __('Details Informations') }}
             </h2>
         </div>
@@ -9,7 +9,7 @@
 
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10 flex flex-col gap-y-5">
+            <div class="flex flex-col p-10 overflow-hidden bg-white shadow-sm sm:rounded-lg gap-y-5">
                 <div class="flex flex-row gap-x-10">
                     <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.4" d="M19 10.2798V17.4298C18.97 20.2798 18.19 20.9998 15.22 20.9998H5.78003C2.76003 20.9998 2 20.2498 2 17.2698V10.2798C2 7.5798 2.63 6.7098 5 6.5698C5.24 6.5598 5.50003 6.5498 5.78003 6.5498H15.22C18.24 6.5498 19 7.2998 19 10.2798Z" fill="#292D32"/>
@@ -20,29 +20,29 @@
                         </svg>
                     <div class="flex flex-col gap-y-10">    
                         <div>
-                            <p class="text-slate-500 text-sm">Total Amount</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">Rp {{$subscribeTransaction->total_amount}}</h3>
+                            <p class="text-sm text-slate-500">Total Amount</p>
+                            <h3 class="text-xl font-bold text-indigo-950">Rp {{$subscribeTransaction->total_amount}}</h3>
                         </div>
                         @if($subscribeTransaction->is_paid)
-                            <span class="w-fit text-sm font-bold py-2 px-3 rounded-full bg-green-500 text-white">
+                            <span class="px-3 py-2 text-sm font-bold text-white bg-green-500 rounded-full w-fit">
                                 ACTIVE
                             </span>
                         @else
-                            <span class="w-fit text-sm font-bold py-2 px-3 rounded-full bg-orange-500 text-white">
+                            <span class="px-3 py-2 text-sm font-bold text-white bg-orange-500 rounded-full w-fit">
                                 PENDING
                             </span>
                         @endif
                         <div>
-                            <p class="text-slate-500 text-sm">Checkout Date</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">{{$subscribeTransaction->created_at}}</h3>
+                            <p class="text-sm text-slate-500">Checkout Date</p>
+                            <h3 class="text-xl font-bold text-indigo-950">{{$subscribeTransaction->created_at}}</h3>
                         </div>
                         <div>
-                            <p class="text-slate-500 text-sm">Subscription Start At</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">{{$subscribeTransaction->subscription_start_date}}</h3>
+                            <p class="text-sm text-slate-500">Subscription Start At</p>
+                            <h3 class="text-xl font-bold text-indigo-950">{{$subscribeTransaction->subscription_start_date}}</h3>
                         </div>
                         <div class="">
-                            <p class="text-slate-500 text-sm">Student</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">{{$subscribeTransaction->user->name}}</h3>
+                            <p class="text-sm text-slate-500">Student</p>
+                            <h3 class="text-xl font-bold text-indigo-950">{{$subscribeTransaction->user->name}}</h3>
                         </div>
                     </div>
                     <div>
@@ -53,7 +53,7 @@
                 <form action="{{route('admin.subscribe_transactions.update', $subscribeTransaction)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <button type="submit" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                    <button type="submit" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                         Approve Transaction
                     </button>
                 </form>

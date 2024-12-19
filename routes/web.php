@@ -18,7 +18,8 @@ Route::get('/category/{category:slug}', [FrontController::class, 'category'])->n
 
 Route::get('/details/{course:slug}', [FrontController::class, 'details'])->name('front.details');
 
-Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
+Route::get('/pricing', [FrontController::class, 'pricing'])
+->name('front.pricing');
 
 // Route dengan middleware auth
 Route::middleware('auth')->group(function () {

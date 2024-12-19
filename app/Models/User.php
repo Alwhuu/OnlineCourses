@@ -58,7 +58,8 @@ class User extends Authenticatable
         return$this->hasMany(SubscribeTransaction::class);
     }
 
-    public function hasActiveSubscription(){
+    public function hasActiveSubcription(){
+        
         $latestSubscription = $this->subscribe_transactions()
         ->where('is_paid', true)
         ->latest('updated_at')
@@ -67,8 +68,9 @@ class User extends Authenticatable
         if(!$latestSubscription){
             return false;
         }
+        
+        $subscriptionEndDate = Carbon::parse($latestSubscription->subscription_start_date)->addMonth(1);
 
-        $subscriptionEndDate = Carbon::parse($latestSubscription->subscription_start_date)->addMonths(1);
         return Carbon::now()->lessThanOrEqualTo($subscriptionEndDate);
     }
 
